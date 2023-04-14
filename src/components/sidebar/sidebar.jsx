@@ -1,6 +1,6 @@
 import React from 'react'
 import Menu from '../menu/menu'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 const StyledSidebar = styled.div`
 

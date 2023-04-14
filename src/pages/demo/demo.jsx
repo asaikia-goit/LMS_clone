@@ -2,52 +2,55 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { fetchArticles } from '../../api/demo';
 
+const allWords = [
+    'academic',
+    'accede',
+    'accept',
+    'acceptable',
+    'acceptance',
+    'access',
+    'accident' ,
+    'accolade',
+    'accompany',
+    'accomplish',
+    'accord',
+    'according',
+    'account',
+    'accountant',
+    'accurate',
+    'accuse',
+    'ache',
+]
 
-const ArticleList = ({ articles }) => (
-  <ul>
-    {articles.map(({ objectID, url, title }) => (
-      <li key={objectID}>
-        <a href={url} target="_blank" rel="noreferrer noopener">
-          {title}
-        </a>
-      </li>
-    ))}
-  </ul>
-);
 
 const Demo = () => {
-    
-    // INITIAL STATE
-    const [articles, setArticles] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    
+    const [inputText, setInputText] = useState('');
+    const [results, setResults] = useState(['']);
 
-    // COMPONENT DID MOUNT HANDLER
     useEffect(() => {
-        const whatever = async () => {
         
-            try {
-                const res = await fetchArticles();
-                setArticles(res);
-            } catch (error) {
-                setError(error);
-            } finally {
-                setLoading(false);
-            }
-        };
+        const filteredWords = allWords.filter(word => 
+            word.toLowerCase().indexOf(inputText) >= 0
+        )
 
-        whatever();
+        setResults(filteredWords);
         
-    }, [])
-
-
+    }, [inputText])
+    
 
     // RETURNS JSX/HTML
     return (
         <div>
-            {error && <p>Whoops, something went wrong: {error.message}</p>}
-            {loading ? <p>loading.....</p> : <ArticleList articles={articles} />}
+            <input type="text" value={inputText} onChange={(e)=>setInputText(e.target.value)} />
+            <ul>
+                {
+                results.map((result) => 
+                    <li>
+                        {result}
+                    </li>
+                )
+                 }
+            </ul>
       </div>
     );
 }

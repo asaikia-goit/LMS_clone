@@ -1,9 +1,5 @@
-import styled from "styled-components";
-
-
-const styledFlex = styled.div`
-    display:flex ;
-`;
+import styled from "styled-components/macro";
+import { StyledFlex } from "../../styles";
 
 const StyledMainWrapper = styled.div`
     width: calc(100vw - 320px);
@@ -12,12 +8,33 @@ const StyledMainWrapper = styled.div`
 
 `;
 
-const StyledUniversity = styled(styledFlex)`
+const StyledUniversity = styled(StyledFlex)`
+    justify-content: space-between ;
     background: aliceblue;
     gap: 32px;
+
+`;
+
+// const StyledUniversityContentWrapper = styled(StyledFlex)`
+//     padding: ${( {padding} ) => padding ? `${padding}px` : '32px' };
+//     background-color: slateblue;
+//     width: ${( {width} ) => width ? `${width}px` : 'auto' };
+// `;
+
+
+const StyledUniversityCardContent = styled(StyledFlex)`
+    flex-direction: column;
+`;
+
+
+const LogoWrapper = styled(StyledFlex)`
+    border-radius: 50%;
+    overflow: hidden;
 `;
 
 export {
-    StyledMainWrapper,
     StyledUniversity,
+    StyledMainWrapper,
+    LogoWrapper,
+    StyledUniversityCardContent,
 }

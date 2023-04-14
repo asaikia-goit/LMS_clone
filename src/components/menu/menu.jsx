@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import MenuItems from '../menuItems/menuItems'
 import {menuConfig} from '../../data/menuConfig';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 
 const StyledMenu = styled.div`
