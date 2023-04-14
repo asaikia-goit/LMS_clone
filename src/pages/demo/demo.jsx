@@ -1,58 +1,29 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { fetchArticles } from '../../api/demo';
+import React, { createContext, useState } from 'react'
+import Footer from './footer'
+import Main from './Main'
+import TopNav from './TopNav'
 
-const allWords = [
-    'academic',
-    'accede',
-    'accept',
-    'acceptable',
-    'acceptance',
-    'access',
-    'accident' ,
-    'accolade',
-    'accompany',
-    'accomplish',
-    'accord',
-    'according',
-    'account',
-    'accountant',
-    'accurate',
-    'accuse',
-    'ache',
-]
-
+const ThemeContext = createContext();
+export { ThemeContext };
 
 const Demo = () => {
-    const [inputText, setInputText] = useState('');
-    const [results, setResults] = useState(['']);
 
-    useEffect(() => {
-        
-        const filteredWords = allWords.filter(word => 
-            word.toLowerCase().indexOf(inputText) >= 0
-        )
+    const [darkThemeEnabled, setDarkThemeEnabled] = useState(false);
 
-        setResults(filteredWords);
-        
-    }, [inputText])
-    
-
-    // RETURNS JSX/HTML
     return (
-        <div>
-            <input type="text" value={inputText} onChange={(e)=>setInputText(e.target.value)} />
-            <ul>
+        <div style={{padding: '40px'}}>
+            <ThemeContext.Provider value={
                 {
-                results.map((result) => 
-                    <li>
-                        {result}
-                    </li>
-                )
-                 }
-            </ul>
-      </div>
-    );
+                darkMode: darkThemeEnabled,
+                updateDarkMode: setDarkThemeEnabled
+                }
+            }>
+                <TopNav />
+                <Main />
+            </ThemeContext.Provider>
+            <Footer />
+        </div>
+    )
 }
 
-export default Demo;
+export default Demo
