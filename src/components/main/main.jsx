@@ -5,10 +5,16 @@ import {
     StyledUniversity,
     LogoWrapper,
     StyledUniversityCardContent,
+    IconsWrapper,
+    StyledIcon
 } from './main.style'
-import {ReactComponent as UniversityLogo} from '../../images/univ-logo.svg'
 import TutorList from '../tutorList/tutorList'
 import CityList from '../cities/cityList'
+import {ReactComponent as UniversityLogo} from '../../images/univ-logo.svg'
+import { ReactComponent as EditIcon } from '../../images/edit.svg';
+import { ReactComponent as DeleteIcon } from '../../images/trashcan.svg';
+import Button from '../button/button'
+
 
 const UniversityCard = () => {
     return <Paper>
@@ -20,11 +26,10 @@ const UniversityCard = () => {
         <h4>MIT</h4>
         </StyledUniversityCardContent>
         
-        {/* remove later */}
-        <div style={{width: '100%', height: '20px', display: 'flex', justifyContent: 'space-between'}}>
-            <div style={{width: '20px', height: '20px', background: '#232323'}}></div>
-            <div style={{width: '20px', height: '20px', background: '#232323'}}></div>
-        </div>
+        <IconsWrapper>
+            <StyledIcon><EditIcon/></StyledIcon>
+            <StyledIcon><DeleteIcon /></StyledIcon>
+        </IconsWrapper>
 
     </Paper>
 
@@ -48,6 +53,8 @@ const Main = () => {
           <TutorList />
 
           <CityList />
+
+          <Button onClickHandler={()=> console.log("you clicked!")} />
       </StyledMainWrapper>
     )
 }

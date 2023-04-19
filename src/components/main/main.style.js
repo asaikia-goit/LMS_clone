@@ -32,9 +32,24 @@ const LogoWrapper = styled(StyledFlex)`
     overflow: hidden;
 `;
 
+const IconsWrapper = styled(StyledFlex)`
+    width: 100%;
+    height: 20px;
+    justify-content: space-between;
+
+`;
+
+const StyledIcon = styled.div`
+    :hover {
+        cursor: pointer;
+    }
+`;
+
 export {
     StyledUniversity,
     StyledMainWrapper,
     LogoWrapper,
     StyledUniversityCardContent,
+    IconsWrapper,
+    StyledIcon
 }

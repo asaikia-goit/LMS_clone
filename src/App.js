@@ -16,12 +16,12 @@ const StyledWrapper = styled.div`
  */
 
 const App = () => {
-    // return <StyledWrapper>
-    //     <Sidebar />
-    //     <Main />
-    // </StyledWrapper>
+    return <StyledWrapper>
+        <Sidebar />
+        <Main />
+    </StyledWrapper>
 
-    return <Demo />
+    // return <Demo />
 }
 
 export default App;
